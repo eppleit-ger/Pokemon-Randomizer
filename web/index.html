@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Nuzlocke Randomizer</title>
+  <meta name="description" content="Pokémon-ROMs direkt im Browser randomizen – auch auf dem iPhone. Basierend auf dem Universal Pokemon Randomizer ZX.">
+  <meta name="theme-color" content="#d63c2f">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Randomizer">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icon-192.png" type="image/png">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <link rel="stylesheet" href="style.css">
+  <script type="module" src="app.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <button class="back" id="back" hidden aria-label="Zurück">
+      <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <div class="brand">
+      <span class="ball" aria-hidden="true"></span>
+      <span id="title">Nuzlocke Randomizer</span>
+    </div>
+  </header>
+
+  <main id="app">
+    <!-- Home: game picker -->
+    <section id="view-home" class="view">
+      <p class="lead">Spiel wählen, ROM auswählen, randomizen – fertig. Alles passiert auf deinem Gerät, die ROM wird nirgendwo hochgeladen.</p>
+      <div class="grid" id="games"></div>
+    </section>
+
+    <!-- Game detail -->
+    <section id="view-game" class="view" hidden>
+      <div class="hero" id="hero">
+        <div class="hero-text">
+          <div class="hero-platform" id="hero-platform"></div>
+          <h1 id="hero-name"></h1>
+        </div>
+      </div>
+
+      <div class="card" id="rom-card">
+        <h2><span class="step">1</span> ROM</h2>
+        <div id="rom-empty">
+          <p class="muted">Wähle deine eigene ROM-Datei aus (z. B. aus der Dateien-App).</p>
+          <label class="button secondary file">
+            <input type="file" id="rom-input">
+            ROM auswählen
+          </label>
+        </div>
+        <div id="rom-loaded" hidden>
+          <div class="rom-line">
+            <div>
+              <div class="rom-name" id="rom-name"></div>
+              <div class="muted small" id="rom-meta"></div>
+            </div>
+            <label class="link file">
+              <input type="file" id="rom-input-change">
+              Ändern
+            </label>
+          </div>
+          <div class="notice warn" id="rom-mismatch" hidden></div>
+          <label class="check" id="remember-row">
+            <input type="checkbox" id="remember" checked>
+            <span>ROM auf diesem Gerät merken</span>
+          </label>
+          <button class="link danger small" id="forget" hidden>Gemerkte ROM löschen</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2><span class="step">2</span> Randomizen</h2>
+        <p class="muted" id="preset-hint"></p>
+        <details class="advanced" id="advanced">
+          <summary>Erweitert</summary>
+          <label class="field">
+            <span>Eigene Settings-Datei (.rnqs)</span>
+            <input type="file" id="settings-input">
+            <span class="muted small" id="settings-name"></span>
+          </label>
+          <label class="field">
+            <span>Seed (optional)</span>
+            <input type="text" id="seed" inputmode="numeric" placeholder="zufällig" autocomplete="off">
+          </label>
+        </details>
+        <button class="button primary big" id="go" disabled>Randomizen</button>
+      </div>
+
+      <div class="card result" id="result" hidden>
+        <h2>Fertig! 🎉</h2>
+        <div class="muted" id="result-meta"></div>
+        <div class="notice" id="result-warnings" hidden></div>
+        <div class="actions">
+          <button class="button primary" id="share" hidden>Teilen / im Emulator öffnen</button>
+          <a class="button secondary" id="download" download>ROM herunterladen</a>
+          <a class="button ghost" id="download-log" download>Spoiler-Log</a>
+        </div>
+      </div>
+
+      <div class="card error" id="error" hidden>
+        <h2>Das hat nicht geklappt</h2>
+        <p id="error-message"></p>
+        <details>
+          <summary>Details</summary>
+          <pre id="error-details"></pre>
+          <button class="button ghost small" id="copy-error">Details kopieren</button>
+        </details>
+      </div>
+    </section>
+  </main>
+
+  <div class="overlay" id="busy" hidden>
+    <div class="busy-box">
+      <div class="spinner" aria-hidden="true"></div>
+      <div class="busy-title" id="busy-title">Randomizen …</div>
+      <div class="muted" id="busy-time">0 s</div>
+      <p class="muted small" id="busy-hint">Bitte die Seite geöffnet lassen.</p>
+    </div>
+  </div>
+
+  <footer class="footer">
+    Basierend auf dem <a href="https://github.com/Ajarmar/universal-pokemon-randomizer-zx" target="_blank" rel="noopener">Universal Pokemon Randomizer ZX</a> (GPLv3).
+    ROMs werden nicht bereitgestellt – verwende nur Spiele, die du selbst besitzt.
+    <span id="version"></span>
+  </footer>
+</body>
+</html>
