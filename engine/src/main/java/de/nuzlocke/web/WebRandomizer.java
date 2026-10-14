@@ -128,7 +128,7 @@ public final class WebRandomizer {
 
             ByteArrayOutputStream logBytes = new ByteArrayOutputStream();
             PrintStream logStream = new PrintStream(logBytes, false, "UTF-8");
-            ResourceBundle bundle = ResourceBundle.getBundle("com/dabomstew/pkrandom/newgui/Bundle");
+            ResourceBundle bundle = com.dabomstew.pkrandom.WebBundle.get();
             Randomizer randomizer = new Randomizer(settings, handler, bundle, false);
             if (seed == null || seed.trim().isEmpty()) {
                 randomizer.randomize(outputPath, logStream);

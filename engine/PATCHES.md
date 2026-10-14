@@ -10,7 +10,12 @@ nur nötig, weil TeaVM einige Java-APIs nicht anbietet:
 | `com/dabomstew/pkrandom/Settings.java` | `clazz.getMethod("values").invoke(null)` → `clazz.getEnumConstants()` (keine Reflection) |
 | `com/dabomstew/pkrandom/SysConstants.java` | `getRootPath()` liefert fest `./` (kein `getProtectionDomain()` im Browser) |
 | `cuecompressors/BLZCoder.java` | `EXIT()` wirft eine Exception statt `System.exit(0)` |
+| `com/dabomstew/pkrandom/MiscTweak.java` | `ResourceBundle.getBundle(...)` → `WebBundle.get()` |
+| `com/dabomstew/pkrandom/WebBundle.java` | neu: lädt `newgui/Bundle.properties` von Hand (TeaVM findet `.properties`-Bundles nicht) |
 | `pptxt/PPTxtHandler.java` | `Character.UnicodeBlock.of(c) != null` durch gleichwertige Prüfung ersetzt (BMP: nur 0x2FE0–0x2FEF ohne Block, Stand Java 21) |
+
+TeaVM läuft im `strict`-Modus, damit Array-Grenzen und `null` wie in Java geprüft werden
+(der Code fängt an einigen Stellen `ArrayIndexOutOfBoundsException`/`NullPointerException` ab).
 
 Zusätzlich (außerhalb von `upr/`):
 

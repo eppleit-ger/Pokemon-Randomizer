@@ -84,6 +84,7 @@
               <targetFileName>randomizer.js</targetFileName>
               <minifying>${teavm.minify}</minifying>
               <optimizationLevel>ADVANCED</optimizationLevel>
+              <strict>true</strict>
               <debugInformationGenerated>false</debugInformationGenerated>
               <sourceMapsGenerated>false</sourceMapsGenerated>
             </configuration>
