@@ -1,6 +1,8 @@
 import { GAMES, CUSTOM_GAME, identifyRom, describeRom } from './games.js';
 
 const ALL_GAMES = [...GAMES, CUSTOM_GAME];
+// Replaced with the commit hash at deploy time, so updated engine files bypass stale caches.
+const BUILD = '__BUILD__';
 const $ = (id) => document.getElementById(id);
 
 // ---------------------------------------------------------------- storage --
@@ -199,7 +201,7 @@ async function loadSettings() {
 
 function runWorker(message, transfer) {
   return new Promise((resolve) => {
-    const worker = new Worker(new URL('./worker.js', import.meta.url), { type: 'module' });
+    const worker = new Worker(new URL(`./worker.js?v=${BUILD}`, import.meta.url), { type: 'module' });
     const finish = (data) => { worker.terminate(); resolve(data); };
     worker.onmessage = (e) => finish(e.data);
     worker.onerror = (e) => finish({ type: 'error', error: e.message || 'Worker-Fehler' });

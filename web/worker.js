@@ -5,7 +5,8 @@ self.onmessage = async (event) => {
   const { rom, romName, settings, seed } = event.data;
   const started = performance.now();
   try {
-    const engine = await import('./engine/randomizer.js');
+    const build = new URL(self.location.href).searchParams.get('v') || 'dev';
+    const engine = await import(`./engine/randomizer.js?v=${build}`);
     const ok = engine.randomize(new Int8Array(rom), romName, new Int8Array(settings), seed || '');
     if (!ok) {
       self.postMessage({ type: 'error', error: engine.getError() || 'Unbekannter Fehler', romName: engine.getRomName() });

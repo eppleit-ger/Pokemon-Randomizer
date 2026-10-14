@@ -21,8 +21,13 @@ self.addEventListener('activate', (event) => {
 self.addEventListener('fetch', (event) => {
   const req = event.request;
   if (req.method !== 'GET' || new URL(req.url).origin !== location.origin) return;
+  // Always revalidate with the server; GitHub Pages otherwise lets browsers
+  // reuse files for 10 minutes, which hides freshly deployed fixes.
+  const fresh = req.mode === 'navigate'
+    ? fetch(req.url, { cache: 'no-cache', credentials: 'same-origin' })
+    : fetch(req, { cache: 'no-cache' });
   event.respondWith(
-    fetch(req)
+    fresh
       .then((res) => {
         if (res.ok) {
           const copy = res.clone();

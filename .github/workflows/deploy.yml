@@ -40,7 +40,7 @@ jobs:
       - name: Stamp build version
         run: |
           echo "${GITHUB_SHA::7}" > web/version.txt
-          sed -i "s/__BUILD__/${GITHUB_SHA::7}/" web/sw.js
+          sed -i "s/__BUILD__/${GITHUB_SHA::7}/" web/sw.js web/app.js
 
       - uses: actions/upload-pages-artifact@v3
         if: github.ref == 'refs/heads/main'
