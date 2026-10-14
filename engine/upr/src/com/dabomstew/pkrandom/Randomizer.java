@@ -833,7 +833,7 @@ public class Randomizer {
                 nonTypeChanges.add(String.format("%d PP", mv.pp));
             }
             if (changes[2]) {
-                nonTypeChanges.add(String.format("%.00f%% accuracy", mv.hitratio));
+                nonTypeChanges.add(String.format("%.00f", mv.hitratio) + "% accuracy"); // [web] TeaVM fails on "%%"
             }
             String logStr = "Made " + mv.name;
             // type or not?
@@ -1307,7 +1307,7 @@ public class Randomizer {
                 int probability = itemListPerProbabilityEntry.getKey();
                 List<String> itemList = itemListPerProbabilityEntry.getValue();
                 String itemsString = String.join(", ", itemList);
-                log.printf("%d%%: %s", probability, itemsString);
+                log.print(probability + "%: " + itemsString); // [web] TeaVM fails on "%%"
                 log.println();
             }
             log.println();

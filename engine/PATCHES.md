@@ -15,6 +15,7 @@ nur nötig, weil TeaVM einige Java-APIs nicht anbietet:
 | `com/dabomstew/pkrandom/RandomSource.java` | `new Random()` → `new JdkRandom()` (gleiche Zufallszahlen wie am PC) |
 | `com/dabomstew/pkrandom/JdkRandom.java` | neu: `java.util.Random` mit exakt den OpenJDK-Algorithmen (TeaVM liefert für gleiche Seeds andere Werte) |
 | `com/dabomstew/pkrandom/JavaMath.java` + alle `Math.round(`-Aufrufe | Java-Rundung (TeaVM: `Math.round(-2.5) == -3`, Java: `-2`) |
+| `com/dabomstew/pkrandom/Randomizer.java` | zwei Format-Strings ohne `%%` (TeaVMs Formatter wirft bei `%%` gefolgt von Text eine Exception) |
 | `pptxt/PPTxtHandler.java` | `Character.UnicodeBlock.of(c) != null` durch gleichwertige Prüfung ersetzt (BMP: nur 0x2FE0–0x2FEF ohne Block, Stand Java 21) |
 
 TeaVM läuft im `strict`-Modus, damit Array-Grenzen und `null` wie in Java geprüft werden
