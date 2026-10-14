@@ -13,7 +13,8 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.release>11</maven.compiler.release>
     <teavm.version>0.16.0</teavm.version>
-    <teavm.minify>true</teavm.minify>
+    <!-- Unminified so error reports name the failing Java method. -->
+    <teavm.minify>false</teavm.minify>
   </properties>
 
   <dependencies>

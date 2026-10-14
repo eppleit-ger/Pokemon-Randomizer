@@ -1119,7 +1119,7 @@ public class Gen4RomHandler extends AbstractDSRomHandler {
             data[2] = Gen4Constants.moveCategoryToByte(moves[i].category);
             data[3] = (byte) moves[i].power;
             data[4] = Gen4Constants.typeToByte(moves[i].type);
-            int hitratio = (int) Math.round(moves[i].hitratio);
+            int hitratio = (int) com.dabomstew.pkrandom.JavaMath.round(moves[i].hitratio);
             if (hitratio < 0) {
                 hitratio = 0;
             }

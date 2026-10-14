@@ -731,7 +731,7 @@ public class Gen5RomHandler extends AbstractDSRomHandler {
             data[2] = Gen5Constants.moveCategoryToByte(moves[i].category);
             data[3] = (byte) moves[i].power;
             data[0] = Gen5Constants.typeToByte(moves[i].type);
-            int hitratio = (int) Math.round(moves[i].hitratio);
+            int hitratio = (int) com.dabomstew.pkrandom.JavaMath.round(moves[i].hitratio);
             if (hitratio < 0) {
                 hitratio = 0;
             }

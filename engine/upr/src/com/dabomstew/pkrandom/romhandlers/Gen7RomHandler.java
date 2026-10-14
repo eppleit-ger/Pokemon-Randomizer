@@ -983,7 +983,7 @@ public class Gen7RomHandler extends Abstract3DSRomHandler {
             moveData[2] = Gen7Constants.moveCategoryToByte(moves[i].category);
             moveData[3] = (byte) moves[i].power;
             moveData[0] = Gen7Constants.typeToByte(moves[i].type);
-            int hitratio = (int) Math.round(moves[i].hitratio);
+            int hitratio = (int) com.dabomstew.pkrandom.JavaMath.round(moves[i].hitratio);
             if (hitratio < 0) {
                 hitratio = 0;
             }

@@ -1247,7 +1247,7 @@ public class Gen3RomHandler extends AbstractGBRomHandler {
             rom[offs + i * 0xC] = (byte) moves[i].effectIndex;
             rom[offs + i * 0xC + 1] = (byte) moves[i].power;
             rom[offs + i * 0xC + 2] = Gen3Constants.typeToByte(moves[i].type);
-            int hitratio = (int) Math.round(moves[i].hitratio);
+            int hitratio = (int) com.dabomstew.pkrandom.JavaMath.round(moves[i].hitratio);
             if (hitratio < 0) {
                 hitratio = 0;
             }

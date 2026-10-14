@@ -72,11 +72,11 @@ public class Gen1Pokemon extends Pokemon {
 
         double totW = hpW + atkW + defW + specW + speW;
 
-        hp = (int) Math.max(1, Math.round(hpW / totW * bst)) + 20;
-        attack = (int) Math.max(1, Math.round(atkW / totW * bst)) + 10;
-        defense = (int) Math.max(1, Math.round(defW / totW * bst)) + 10;
-        special = (int) Math.max(1, Math.round(specW / totW * bst)) + 10;
-        speed = (int) Math.max(1, Math.round(speW / totW * bst)) + 10;
+        hp = (int) Math.max(1, com.dabomstew.pkrandom.JavaMath.round(hpW / totW * bst)) + 20;
+        attack = (int) Math.max(1, com.dabomstew.pkrandom.JavaMath.round(atkW / totW * bst)) + 10;
+        defense = (int) Math.max(1, com.dabomstew.pkrandom.JavaMath.round(defW / totW * bst)) + 10;
+        special = (int) Math.max(1, com.dabomstew.pkrandom.JavaMath.round(specW / totW * bst)) + 10;
+        speed = (int) Math.max(1, com.dabomstew.pkrandom.JavaMath.round(speW / totW * bst)) + 10;
 
         // Check for something we can't store
         if (hp > 255 || attack > 255 || defense > 255 || special > 255 || speed > 255) {
@@ -92,11 +92,11 @@ public class Gen1Pokemon extends Pokemon {
 
         double bstRatio = ourBST / theirBST;
 
-        hp = (int) Math.min(255, Math.max(1, Math.round(evolvesFrom.hp * bstRatio)));
-        attack = (int) Math.min(255, Math.max(1, Math.round(evolvesFrom.attack * bstRatio)));
-        defense = (int) Math.min(255, Math.max(1, Math.round(evolvesFrom.defense * bstRatio)));
-        speed = (int) Math.min(255, Math.max(1, Math.round(evolvesFrom.speed * bstRatio)));
-        special = (int) Math.min(255, Math.max(1, Math.round(evolvesFrom.special * bstRatio)));
+        hp = (int) Math.min(255, Math.max(1, com.dabomstew.pkrandom.JavaMath.round(evolvesFrom.hp * bstRatio)));
+        attack = (int) Math.min(255, Math.max(1, com.dabomstew.pkrandom.JavaMath.round(evolvesFrom.attack * bstRatio)));
+        defense = (int) Math.min(255, Math.max(1, com.dabomstew.pkrandom.JavaMath.round(evolvesFrom.defense * bstRatio)));
+        speed = (int) Math.min(255, Math.max(1, com.dabomstew.pkrandom.JavaMath.round(evolvesFrom.speed * bstRatio)));
+        special = (int) Math.min(255, Math.max(1, com.dabomstew.pkrandom.JavaMath.round(evolvesFrom.special * bstRatio)));
     }
 
     @Override
@@ -112,11 +112,11 @@ public class Gen1Pokemon extends Pokemon {
 
         double totW = hpW + atkW + defW + specW + speW;
 
-        double hpDiff = Math.round((hpW / totW) * bstDiff);
-        double atkDiff = Math.round((atkW / totW) * bstDiff);
-        double defDiff = Math.round((defW / totW) * bstDiff);
-        double specDiff = Math.round((specW / totW) * bstDiff);
-        double speDiff = Math.round((speW / totW) * bstDiff);
+        double hpDiff = com.dabomstew.pkrandom.JavaMath.round((hpW / totW) * bstDiff);
+        double atkDiff = com.dabomstew.pkrandom.JavaMath.round((atkW / totW) * bstDiff);
+        double defDiff = com.dabomstew.pkrandom.JavaMath.round((defW / totW) * bstDiff);
+        double specDiff = com.dabomstew.pkrandom.JavaMath.round((specW / totW) * bstDiff);
+        double speDiff = com.dabomstew.pkrandom.JavaMath.round((speW / totW) * bstDiff);
 
         hp = (int) Math.min(255, Math.max(1, evolvesFrom.hp + hpDiff));
         attack = (int) Math.min(255, Math.max(1, evolvesFrom.attack + atkDiff));

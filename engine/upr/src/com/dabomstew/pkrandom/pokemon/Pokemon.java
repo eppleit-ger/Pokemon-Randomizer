@@ -123,11 +123,11 @@ public class Pokemon implements Comparable<Pokemon> {
             double totW = atkW + defW + spaW + spdW + speW;
 
             hp = 1;
-            attack = (int) Math.max(1, Math.round(atkW / totW * bst)) + 10;
-            defense = (int) Math.max(1, Math.round(defW / totW * bst)) + 10;
-            spatk = (int) Math.max(1, Math.round(spaW / totW * bst)) + 10;
-            spdef = (int) Math.max(1, Math.round(spdW / totW * bst)) + 10;
-            speed = (int) Math.max(1, Math.round(speW / totW * bst)) + 10;
+            attack = (int) Math.max(1, com.dabomstew.pkrandom.JavaMath.round(atkW / totW * bst)) + 10;
+            defense = (int) Math.max(1, com.dabomstew.pkrandom.JavaMath.round(defW / totW * bst)) + 10;
+            spatk = (int) Math.max(1, com.dabomstew.pkrandom.JavaMath.round(spaW / totW * bst)) + 10;
+            spdef = (int) Math.max(1, com.dabomstew.pkrandom.JavaMath.round(spdW / totW * bst)) + 10;
+            speed = (int) Math.max(1, com.dabomstew.pkrandom.JavaMath.round(speW / totW * bst)) + 10;
         } else {
             // Minimum 20 HP, 10 everything else
             int bst = bst() - 70;
@@ -138,12 +138,12 @@ public class Pokemon implements Comparable<Pokemon> {
 
             double totW = hpW + atkW + defW + spaW + spdW + speW;
 
-            hp = (int) Math.max(1, Math.round(hpW / totW * bst)) + 20;
-            attack = (int) Math.max(1, Math.round(atkW / totW * bst)) + 10;
-            defense = (int) Math.max(1, Math.round(defW / totW * bst)) + 10;
-            spatk = (int) Math.max(1, Math.round(spaW / totW * bst)) + 10;
-            spdef = (int) Math.max(1, Math.round(spdW / totW * bst)) + 10;
-            speed = (int) Math.max(1, Math.round(speW / totW * bst)) + 10;
+            hp = (int) Math.max(1, com.dabomstew.pkrandom.JavaMath.round(hpW / totW * bst)) + 20;
+            attack = (int) Math.max(1, com.dabomstew.pkrandom.JavaMath.round(atkW / totW * bst)) + 10;
+            defense = (int) Math.max(1, com.dabomstew.pkrandom.JavaMath.round(defW / totW * bst)) + 10;
+            spatk = (int) Math.max(1, com.dabomstew.pkrandom.JavaMath.round(spaW / totW * bst)) + 10;
+            spdef = (int) Math.max(1, com.dabomstew.pkrandom.JavaMath.round(spdW / totW * bst)) + 10;
+            speed = (int) Math.max(1, com.dabomstew.pkrandom.JavaMath.round(speW / totW * bst)) + 10;
         }
 
         // Check for something we can't store
@@ -160,12 +160,12 @@ public class Pokemon implements Comparable<Pokemon> {
 
         double bstRatio = ourBST / theirBST;
 
-        hp = (int) Math.min(255, Math.max(1, Math.round(evolvesFrom.hp * bstRatio)));
-        attack = (int) Math.min(255, Math.max(1, Math.round(evolvesFrom.attack * bstRatio)));
-        defense = (int) Math.min(255, Math.max(1, Math.round(evolvesFrom.defense * bstRatio)));
-        speed = (int) Math.min(255, Math.max(1, Math.round(evolvesFrom.speed * bstRatio)));
-        spatk = (int) Math.min(255, Math.max(1, Math.round(evolvesFrom.spatk * bstRatio)));
-        spdef = (int) Math.min(255, Math.max(1, Math.round(evolvesFrom.spdef * bstRatio)));
+        hp = (int) Math.min(255, Math.max(1, com.dabomstew.pkrandom.JavaMath.round(evolvesFrom.hp * bstRatio)));
+        attack = (int) Math.min(255, Math.max(1, com.dabomstew.pkrandom.JavaMath.round(evolvesFrom.attack * bstRatio)));
+        defense = (int) Math.min(255, Math.max(1, com.dabomstew.pkrandom.JavaMath.round(evolvesFrom.defense * bstRatio)));
+        speed = (int) Math.min(255, Math.max(1, com.dabomstew.pkrandom.JavaMath.round(evolvesFrom.speed * bstRatio)));
+        spatk = (int) Math.min(255, Math.max(1, com.dabomstew.pkrandom.JavaMath.round(evolvesFrom.spatk * bstRatio)));
+        spdef = (int) Math.min(255, Math.max(1, com.dabomstew.pkrandom.JavaMath.round(evolvesFrom.spdef * bstRatio)));
     }
 
     public void assignNewStatsForEvolution(Pokemon evolvesFrom, Random random) {
@@ -181,12 +181,12 @@ public class Pokemon implements Comparable<Pokemon> {
 
         double totW = hpW + atkW + defW + spaW + spdW + speW;
 
-        double hpDiff = Math.round((hpW / totW) * bstDiff);
-        double atkDiff = Math.round((atkW / totW) * bstDiff);
-        double defDiff = Math.round((defW / totW) * bstDiff);
-        double spaDiff = Math.round((spaW / totW) * bstDiff);
-        double spdDiff = Math.round((spdW / totW) * bstDiff);
-        double speDiff = Math.round((speW / totW) * bstDiff);
+        double hpDiff = com.dabomstew.pkrandom.JavaMath.round((hpW / totW) * bstDiff);
+        double atkDiff = com.dabomstew.pkrandom.JavaMath.round((atkW / totW) * bstDiff);
+        double defDiff = com.dabomstew.pkrandom.JavaMath.round((defW / totW) * bstDiff);
+        double spaDiff = com.dabomstew.pkrandom.JavaMath.round((spaW / totW) * bstDiff);
+        double spdDiff = com.dabomstew.pkrandom.JavaMath.round((spdW / totW) * bstDiff);
+        double speDiff = com.dabomstew.pkrandom.JavaMath.round((speW / totW) * bstDiff);
 
         hp = (int) Math.min(255, Math.max(1, evolvesFrom.hp + hpDiff));
         attack = (int) Math.min(255, Math.max(1, evolvesFrom.attack + atkDiff));

@@ -724,7 +724,7 @@ public class Gen2RomHandler extends AbstractGBCRomHandler {
             rom[offs + (i - 1) * 7 + 1] = (byte) moves[i].effectIndex;
             rom[offs + (i - 1) * 7 + 2] = (byte) moves[i].power;
             rom[offs + (i - 1) * 7 + 3] = Gen2Constants.typeToByte(moves[i].type);
-            int hitratio = (int) Math.round(moves[i].hitratio * 2.55);
+            int hitratio = (int) com.dabomstew.pkrandom.JavaMath.round(moves[i].hitratio * 2.55);
             if (hitratio < 0) {
                 hitratio = 0;
             }

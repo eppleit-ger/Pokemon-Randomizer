@@ -900,8 +900,8 @@ public abstract class AbstractRomHandler implements RomHandler {
         if (levelModifier != 0) {
             for (EncounterSet area : currentEncounters) {
                 for (Encounter enc : area.encounters) {
-                    enc.level = Math.min(100, (int) Math.round(enc.level * (1 + levelModifier / 100.0)));
-                    enc.maxLevel = Math.min(100, (int) Math.round(enc.maxLevel * (1 + levelModifier / 100.0)));
+                    enc.level = Math.min(100, (int) com.dabomstew.pkrandom.JavaMath.round(enc.level * (1 + levelModifier / 100.0)));
+                    enc.maxLevel = Math.min(100, (int) com.dabomstew.pkrandom.JavaMath.round(enc.maxLevel * (1 + levelModifier / 100.0)));
                 }
             }
         }
@@ -1136,8 +1136,8 @@ public abstract class AbstractRomHandler implements RomHandler {
         if (levelModifier != 0) {
             for (EncounterSet area : currentEncounters) {
                 for (Encounter enc : area.encounters) {
-                    enc.level = Math.min(100, (int) Math.round(enc.level * (1 + levelModifier / 100.0)));
-                    enc.maxLevel = Math.min(100, (int) Math.round(enc.maxLevel * (1 + levelModifier / 100.0)));
+                    enc.level = Math.min(100, (int) com.dabomstew.pkrandom.JavaMath.round(enc.level * (1 + levelModifier / 100.0)));
+                    enc.maxLevel = Math.min(100, (int) com.dabomstew.pkrandom.JavaMath.round(enc.maxLevel * (1 + levelModifier / 100.0)));
                 }
             }
         }
@@ -1264,8 +1264,8 @@ public abstract class AbstractRomHandler implements RomHandler {
         if (levelModifier != 0) {
             for (EncounterSet area : currentEncounters) {
                 for (Encounter enc : area.encounters) {
-                    enc.level = Math.min(100, (int) Math.round(enc.level * (1 + levelModifier / 100.0)));
-                    enc.maxLevel = Math.min(100, (int) Math.round(enc.maxLevel * (1 + levelModifier / 100.0)));
+                    enc.level = Math.min(100, (int) com.dabomstew.pkrandom.JavaMath.round(enc.level * (1 + levelModifier / 100.0)));
+                    enc.maxLevel = Math.min(100, (int) com.dabomstew.pkrandom.JavaMath.round(enc.maxLevel * (1 + levelModifier / 100.0)));
                 }
             }
         }
@@ -1283,8 +1283,8 @@ public abstract class AbstractRomHandler implements RomHandler {
         if (levelModifier != 0) {
             for (EncounterSet area : currentEncounters) {
                 for (Encounter enc : area.encounters) {
-                    enc.level = Math.min(100, (int) Math.round(enc.level * (1 + levelModifier / 100.0)));
-                    enc.maxLevel = Math.min(100, (int) Math.round(enc.maxLevel * (1 + levelModifier / 100.0)));
+                    enc.level = Math.min(100, (int) com.dabomstew.pkrandom.JavaMath.round(enc.level * (1 + levelModifier / 100.0)));
+                    enc.maxLevel = Math.min(100, (int) com.dabomstew.pkrandom.JavaMath.round(enc.maxLevel * (1 + levelModifier / 100.0)));
                 }
             }
             setEncounters(true, currentEncounters);
@@ -1648,7 +1648,7 @@ public abstract class AbstractRomHandler implements RomHandler {
     private void applyLevelModifierToTrainerPokemon(Trainer trainer, int levelModifier) {
         if (levelModifier != 0) {
             for (TrainerPokemon tp : trainer.pokemon) {
-                tp.level = Math.min(100, (int) Math.round(tp.level * (1 + levelModifier / 100.0)));
+                tp.level = Math.min(100, (int) com.dabomstew.pkrandom.JavaMath.round(tp.level * (1 + levelModifier / 100.0)));
             }
         }
     }
@@ -2861,7 +2861,7 @@ public abstract class AbstractRomHandler implements RomHandler {
                 if (mv.hitCount != 1) {
                     // Divide randomized power by average hit count, round to
                     // nearest 5
-                    mv.power = (int) (Math.round(mv.power / mv.hitCount / 5) * 5);
+                    mv.power = (int) (com.dabomstew.pkrandom.JavaMath.round(mv.power / mv.hitCount / 5) * 5);
                     if (mv.power == 0) {
                         mv.power = 5;
                     }
@@ -3489,7 +3489,7 @@ public abstract class AbstractRomHandler implements RomHandler {
             }
 
             // Force a certain amount of good damaging moves depending on the percentage
-            int goodDamagingLeft = (int)Math.round(goodDamagingPercentage * moves.size());
+            int goodDamagingLeft = (int)com.dabomstew.pkrandom.JavaMath.round(goodDamagingPercentage * moves.size());
 
             // Replace moves as needed
             for (int i = 0; i < moves.size(); i++) {
@@ -3629,7 +3629,7 @@ public abstract class AbstractRomHandler implements RomHandler {
             }
 
             // Force a certain amount of good damaging moves depending on the percentage
-            int goodDamagingLeft = (int)Math.round(goodDamagingPercentage * moves.size());
+            int goodDamagingLeft = (int)com.dabomstew.pkrandom.JavaMath.round(goodDamagingPercentage * moves.size());
 
             // Replace moves as needed
             for (int i = 0; i < moves.size(); i++) {
@@ -4308,12 +4308,12 @@ public abstract class AbstractRomHandler implements RomHandler {
         if (levelModifier != 0) {
             for (StaticEncounter se : replacements) {
                 if (!se.isEgg) {
-                    se.level = Math.min(100, (int) Math.round(se.level * (1 + levelModifier / 100.0)));
-                    se.maxLevel = Math.min(100, (int) Math.round(se.maxLevel * (1 + levelModifier / 100.0)));
+                    se.level = Math.min(100, (int) com.dabomstew.pkrandom.JavaMath.round(se.level * (1 + levelModifier / 100.0)));
+                    se.maxLevel = Math.min(100, (int) com.dabomstew.pkrandom.JavaMath.round(se.maxLevel * (1 + levelModifier / 100.0)));
                     for (StaticEncounter linkedStatic : se.linkedEncounters) {
                         if (!linkedStatic.isEgg) {
-                            linkedStatic.level = Math.min(100, (int) Math.round(linkedStatic.level * (1 + levelModifier / 100.0)));
-                            linkedStatic.maxLevel = Math.min(100, (int) Math.round(linkedStatic.maxLevel * (1 + levelModifier / 100.0)));
+                            linkedStatic.level = Math.min(100, (int) com.dabomstew.pkrandom.JavaMath.round(linkedStatic.level * (1 + levelModifier / 100.0)));
+                            linkedStatic.maxLevel = Math.min(100, (int) com.dabomstew.pkrandom.JavaMath.round(linkedStatic.maxLevel * (1 + levelModifier / 100.0)));
                         }
                     }
                 }
@@ -4349,10 +4349,10 @@ public abstract class AbstractRomHandler implements RomHandler {
         List<StaticEncounter> currentStaticPokemon = this.getStaticPokemon();
         for (StaticEncounter se : currentStaticPokemon) {
             if (!se.isEgg) {
-                se.level = Math.min(100, (int) Math.round(se.level * (1 + levelModifier / 100.0)));
+                se.level = Math.min(100, (int) com.dabomstew.pkrandom.JavaMath.round(se.level * (1 + levelModifier / 100.0)));
                 for (StaticEncounter linkedStatic : se.linkedEncounters) {
                     if (!linkedStatic.isEgg) {
-                        linkedStatic.level = Math.min(100, (int) Math.round(linkedStatic.level * (1 + levelModifier / 100.0)));
+                        linkedStatic.level = Math.min(100, (int) com.dabomstew.pkrandom.JavaMath.round(linkedStatic.level * (1 + levelModifier / 100.0)));
                     }
                 }
             }
@@ -4498,7 +4498,7 @@ public abstract class AbstractRomHandler implements RomHandler {
         List<Integer> pickedMoves = new ArrayList<>();
 
         // Force a certain amount of good damaging moves depending on the percentage
-        int goodDamagingLeft = (int)Math.round(goodDamagingPercentage * (tmCount - preservedFieldMoveCount));
+        int goodDamagingLeft = (int)com.dabomstew.pkrandom.JavaMath.round(goodDamagingPercentage * (tmCount - preservedFieldMoveCount));
 
         for (int i = 0; i < tmCount - preservedFieldMoveCount; i++) {
             Move chosenMove;
@@ -4761,7 +4761,7 @@ public abstract class AbstractRomHandler implements RomHandler {
         List<Integer> pickedMoves = new ArrayList<>();
 
         // Force a certain amount of good damaging moves depending on the percentage
-        int goodDamagingLeft = (int)Math.round(goodDamagingPercentage * (mtCount - preservedFieldMoveCount));
+        int goodDamagingLeft = (int)com.dabomstew.pkrandom.JavaMath.round(goodDamagingPercentage * (mtCount - preservedFieldMoveCount));
 
         for (int i = 0; i < mtCount - preservedFieldMoveCount; i++) {
             Move chosenMove;
@@ -7173,7 +7173,7 @@ public abstract class AbstractRomHandler implements RomHandler {
                 newTotem.level = old.level;
 
                 if (levelModifier != 0) {
-                    newTotem.level = Math.min(100, (int) Math.round(newTotem.level * (1 + levelModifier / 100.0)));
+                    newTotem.level = Math.min(100, (int) com.dabomstew.pkrandom.JavaMath.round(newTotem.level * (1 + levelModifier / 100.0)));
                 }
                 if (pokemonLeft.size() == 0) {
                     pokemonLeft.addAll(!allowAltFormes ? mainPokemonList : listInclFormesExclCosmetics);
@@ -7183,7 +7183,7 @@ public abstract class AbstractRomHandler implements RomHandler {
                 newTotem.pkmn = old.pkmn;
                 newTotem.level = old.level;
                 if (levelModifier != 0) {
-                    newTotem.level = Math.min(100, (int) Math.round(newTotem.level * (1 + levelModifier / 100.0)));
+                    newTotem.level = Math.min(100, (int) com.dabomstew.pkrandom.JavaMath.round(newTotem.level * (1 + levelModifier / 100.0)));
                 }
                 setFormeForStaticEncounter(newTotem, newTotem.pkmn);
             }
@@ -7213,7 +7213,7 @@ public abstract class AbstractRomHandler implements RomHandler {
                     newAlly.resetMoves = true;
                     newAlly.level = oldAlly.level;
                     if (levelModifier != 0) {
-                        newAlly.level = Math.min(100, (int) Math.round(newAlly.level * (1 + levelModifier / 100.0)));
+                        newAlly.level = Math.min(100, (int) com.dabomstew.pkrandom.JavaMath.round(newAlly.level * (1 + levelModifier / 100.0)));
                     }
 
                     newTotem.allies.put(oldAllyIndex,newAlly);
@@ -7226,7 +7226,7 @@ public abstract class AbstractRomHandler implements RomHandler {
                 newTotem.allies = old.allies;
                 for (StaticEncounter ally: newTotem.allies.values()) {
                     if (levelModifier != 0) {
-                        ally.level = Math.min(100, (int) Math.round(ally.level * (1 + levelModifier / 100.0)));
+                        ally.level = Math.min(100, (int) com.dabomstew.pkrandom.JavaMath.round(ally.level * (1 + levelModifier / 100.0)));
                         setFormeForStaticEncounter(ally, ally.pkmn);
                     }
                 }
@@ -7302,7 +7302,7 @@ public abstract class AbstractRomHandler implements RomHandler {
         for (Pokemon p : placedPK) {
             placedPKNum += placementHistory.get(p);
         }
-        float placedAverage = Math.round((float)placedPKNum / (float)placedPK.size());
+        float placedAverage = com.dabomstew.pkrandom.JavaMath.round((float)placedPKNum / (float)placedPK.size());
 
 
 

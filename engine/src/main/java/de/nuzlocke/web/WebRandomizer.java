@@ -17,7 +17,9 @@ import java.io.StringWriter;
 import java.io.PrintWriter;
 import java.nio.charset.StandardCharsets;
 import java.util.ResourceBundle;
+import org.teavm.jso.JSBody;
 import org.teavm.jso.JSExport;
+import org.teavm.jso.JSObject;
 import org.teavm.jso.typedarrays.Int8Array;
 import org.teavm.runtime.fs.VirtualFileSystemProvider;
 
@@ -148,7 +150,7 @@ public final class WebRandomizer {
         } catch (Throwable t) {
             StringWriter sw = new StringWriter();
             t.printStackTrace(new PrintWriter(sw));
-            error = "Fehler beim Randomizen: " + t + "\n" + sw;
+            error = "Fehler beim Randomizen: " + t + "\n" + sw + "\nJS-Stack:\n" + jsStack((JSObject) (Object) t);
             return false;
         } finally {
             warnings = warn.toString();
@@ -207,6 +209,10 @@ public final class WebRandomizer {
         outputSize = 0;
         log = "";
     }
+
+    /** The JavaScript stack captured where the exception was thrown (function names = Java methods). */
+    @JSBody(params = "t", script = "var e = t && t.$jsException; return e && e.stack ? String(e.stack) : '';")
+    private static native String jsStack(JSObject t);
 
     private static String extensionOf(String name) {
         if (name == null) {

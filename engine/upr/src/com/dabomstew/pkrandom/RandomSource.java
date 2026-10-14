@@ -31,16 +31,16 @@ import java.util.Random;
 
 public class RandomSource {
 
-    private static Random source = new Random();
-    private static Random cosmeticSource = new Random();
+    private static Random source = new JdkRandom() /* [web] */;
+    private static Random cosmeticSource = new JdkRandom() /* [web] */;
     private static int calls = 0;
     private static int cosmeticCalls = 0;
     private static Random instance = new RandomSourceInstance();
     private static Random cosmeticInstance = new CosmeticRandomSourceInstance();
 
     public static void reset() {
-        source = new Random();
-        cosmeticSource = new Random();
+        source = new JdkRandom() /* [web] */;
+        cosmeticSource = new JdkRandom() /* [web] */;
         calls = 0;
         cosmeticCalls = 0;
     }
